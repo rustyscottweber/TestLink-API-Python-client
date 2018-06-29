@@ -131,6 +131,20 @@ TL version >= 1.9.11
                     'getBugs' : True / False 
 """
 
+    @decoApiCallAddDevKey
+    @decoMakerApiCallWithArgs(['testplanid'],
+                              ['testcaseid', 'testcaseexternalid',
+                               'platformid', 'platformname',
+                               'buildid', 'buildname', 'options'])
+    def getAllExecutionsResults(self):
+        """ Gets the result of ALL executions for a particular testcase on a test plan.
+If there are no filter criteria regarding platform and build,
+result will be get WITHOUT checking for a particular platform and build.
+
+Method can only be used with
+TL version >= 1.18
+"""
+
     @decoApiCallWithoutArgs
     def sayHello(self):
         """ Lets you see if the server is up and running """
@@ -179,7 +193,7 @@ TL version >= 1.9.11
         releasedate : YYYY-MM-DD
         copytestersfrombuild : valid buildid tester assignments will be copied.
           """
-        
+
     @decoMakerApiCallReplaceTLResponseError() 
     @decoApiCallAddDevKey            
     @decoMakerApiCallWithArgs()
